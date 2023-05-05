@@ -67,7 +67,7 @@ int is_valid(Node* n){
   int *nums = calloc(10, sizeof(int));
   if (nums == NULL) exit(EXIT_FAILURE);
 
-  int i, j;
+  int i, j, k, p;
   //Recorrer filas
   for (i = 0; i < 9; i++){
     for (j = 0; j < 9; j++){
@@ -76,8 +76,8 @@ int is_valid(Node* n){
         nums[n->sudo[i][j]] = 1;
       else
         return 0;
-      reciclarArreglo(nums);
     }
+    reciclarArreglo(nums);
   }
 
   //Recorrer columnas
@@ -88,8 +88,21 @@ int is_valid(Node* n){
         nums[n->sudo[j][i]] = 1;
       else
         return 0;
-      reciclarArreglo(nums);
     }
+    reciclarArreglo(nums);
+  }
+
+  for (k = 0; k < 9; k++){
+    for(p=0;p<9;p++){
+    int i=3*(k/3) + (p/3) ;
+    int j=3*(k%3) + (p%3) ;
+    if (n->sudo[j][i] == 0) continue;
+      if (nums[n->sudo[j][i]] == 0)
+        nums[n->sudo[j][i]] = 1;
+      else
+        return 0;
+    }
+    reciclarArreglo(nums);
   }
 
   return 1;
@@ -101,14 +114,19 @@ List* get_adj_nodes(Node* n){
   int i, j, k;
   if (n == NULL) return NULL;
 
-  for (i = 0; i < 9; i++)
-    for (j = 0; j < 9; j++)
-      if (n->sudo[i][j] == 0)
+  for (i = 0; i < 9; i++){
+    for (j = 0; j < 9; j++){
+      if (n->sudo[i][j] == 0){
         for (k = 1; k < 10; k++){
           Node * new = copy(n);
           new->sudo[i][j] = k;
           pushBack(list, new);
         }
+        if (is_valid(last(list)) == 0)
+        popBack(list);
+      }
+    }
+  }  
   return list;
 }
 
