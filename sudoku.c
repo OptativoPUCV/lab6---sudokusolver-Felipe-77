@@ -132,7 +132,14 @@ List* get_adj_nodes(Node* n){
 
 
 int is_final(Node* n){
-    return 0;
+
+  int i, j, max = 8;
+  for (i = 0; i < 5; i++){
+    for (j = 0; j < 5; j++){
+      if (n->sudo[i][j] == 0 || n->sudo[max - i][max - j] == 0)  return 0;
+    }
+  }
+  return 1;
 }
 
 Node* DFS(Node* initial, int* cont){
