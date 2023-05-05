@@ -56,7 +56,7 @@ if ./a.out &> /dev/null ; then
   echo "Quiere actualizar su avance en el servidor? (s|n): " >&3
   read response
 
-  if [ "$response" == "s" ]; then
+  if [ "$response" = "s" ]; then
     git pull >&3
     git push >&3
   fi
