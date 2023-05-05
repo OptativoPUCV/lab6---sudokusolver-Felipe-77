@@ -103,3 +103,6 @@ sudoku.c:130:1: error: control reaches end of non-void function [-Werror=return-
 cc1: all warnings being treated as errors
 Compilation failed
 c37ee44
+ tests:  6|2
+total_score: 45/70
+7141638
