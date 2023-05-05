@@ -1,0 +1,25 @@
+vie 05 may 2023 08:35:43 -04: 
+ sudoku.c | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘read_file’:
+sudoku.c:28:9: error: implicit declaration of function ‘rintf’ [-Werror=implicit-function-declaration]
+   28 |         rintf("failed to read data!");
+      |         ^~~~~
+sudoku.c:4:1: note: include ‘<math.h>’ or provide a declaration of ‘rintf’
+    3 | #include "list.h"
+  +++ |+#include <math.h>
+    4 | 
+sudoku.c:28:9: error: incompatible implicit declaration of built-in function ‘rintf’ [-Werror=builtin-declaration-mismatch]
+   28 |         rintf("failed to read data!");
+      |         ^~~~~
+sudoku.c:28:9: note: include ‘<math.h>’ or provide a declaration of ‘rintf’
+sudoku.c:28:15: error: incompatible type for argument 1 of ‘rintf’
+   28 |         rintf("failed to read data!");
+      |               ^~~~~~~~~~~~~~~~~~~~~~
+      |               |
+      |               char *
+sudoku.c:28:15: note: expected ‘float’ but argument is of type ‘char *’
+cc1: all warnings being treated as errors
+Compilation failed
+b5200c6
