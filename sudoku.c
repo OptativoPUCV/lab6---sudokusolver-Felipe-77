@@ -47,30 +47,51 @@ void print_node(Node* n){
 int validateRange(Node * n){
   int i, j;
 
-  for (i = 0; i < 9; i++)
-    for (j = 0; j < 9; j++)
+  for (i = 0; i < 9; i++){
+    for (j = 0; j < 9; j++){
       if (n->sudo[i][j] < 0 || n->sudo[i][j] > 9)
         return 0;
-  
+    }
+  }
   return 1;
 }
 
+void reciclarArreglo(int * a){
+  for (int i = 0; i < 10; i++)
+    a[i] = 0;
+}
+
 int is_valid(Node* n){
-  if (validateRange(n) == 0) return 0;
+  //if (validateRange(n) == 0) return 0;
 
   int *nums = calloc(10, sizeof(int));
   if (nums == NULL) exit(EXIT_FAILURE);
 
-  //Recorrer filas
   int i, j;
-  for (i = 0; i < 9; i++)
+  //Recorrer filas
+  for (i = 0; i < 9; i++){
     for (j = 0; j < 9; j++){
+      if (n->sudo[i][j] == 0) continue;
       if (nums[n->sudo[i][j]] == 0)
         nums[n->sudo[i][j]] = 1;
       else
         return 0;
+      reciclarArreglo(nums);
     }
-    
+  }
+
+  //Recorrer columnas
+  for (i = 0; i < 9; i++){
+    for (j = 0; j < 9; j++){
+      if (n->sudo[j][i] == 0) continue;
+      if (nums[n->sudo[j][i]] == 0)
+        nums[n->sudo[j][i]] = 1;
+      else
+        return 0;
+      reciclarArreglo(nums);
+    }
+  }
+
   return 1;
 }
 

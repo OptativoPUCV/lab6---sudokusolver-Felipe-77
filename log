@@ -46,3 +46,34 @@ total_score: 15/70
  tests:  2|4
 total_score: 15/70
 2688a15
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:74:8: error: redefinition of ‘nums’
+   74 |   int *nums = calloc(10, sizeof(int));
+      |        ^~~~
+sudoku.c:61:8: note: previous definition of ‘nums’ with type ‘int *’
+   61 |   int *nums = calloc(10, sizeof(int));
+      |        ^~~~
+Compilation failed
+7d7e6d2
+ tests:  2|4
+total_score: 15/70
+7d7e6d2
+ tests:  2|4
+total_score: 15/70
+7d7e6d2
+ tests:  2|4
+total_score: 15/70
+7d7e6d2
+ tests:  2|4
+total_score: 15/70
+7d7e6d2
+ tests:  2|4
+total_score: 15/70
+7d7e6d2
+ tests:  2|4
+total_score: 15/70
+7d7e6d2
+ tests:  2|4
+total_score: 15/70
+7d7e6d2
