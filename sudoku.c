@@ -44,9 +44,34 @@ void print_node(Node* n){
   }
 }
 
-int is_valid(Node* n){
+int validateRange(Node * n){
+  int i, j;
 
-    return 1;
+  for (i = 0; i < 9; i++)
+    for (j = 0; j < 9; j++)
+      if (n->sudo[i][j] < 0 || n->sudo[i][j] > 9)
+        return 0;
+  
+  return 1;
+}
+
+int is_valid(Node* n){
+  if (validateRange(n) == 0) return 0;
+
+  int *nums = calloc(10, sizeof(int));
+  if (nums == NULL) exit(EXIT_FAILURE);
+
+  //Recorrer filas
+  int i, j;
+  for (i = 0; i < 9; i++)
+    for (j = 0; j < 9; j++){
+      if (nums[n->sudo[i][j]] == 0)
+        nums[n->sudo[i][j]] = 1;
+      else
+        return 0;
+    }
+    
+  return 1;
 }
 
 

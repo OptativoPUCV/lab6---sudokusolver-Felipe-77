@@ -26,3 +26,23 @@ b5200c6
  tests:  2|4
 total_score: 15/70
 5155fc6
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:61:18: error: invalid initializer
+   61 |   int nums[10] = calloc(10, sizeof(int));
+      |                  ^~~~~~
+sudoku.c:62:12: error: the comparison will always evaluate as ‘false’ for the address of ‘nums’ will never be NULL [-Werror=address]
+   62 |   if (nums == NULL) exit(EXIT_FAILURE);
+      |            ^~
+sudoku.c:61:7: note: ‘nums’ declared here
+   61 |   int nums[10] = calloc(10, sizeof(int));
+      |       ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+2688a15
+ tests:  2|4
+total_score: 15/70
+2688a15
+ tests:  2|4
+total_score: 15/70
+2688a15
