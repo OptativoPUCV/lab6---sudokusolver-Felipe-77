@@ -62,7 +62,7 @@ void reciclarArreglo(int * a){
 }
 
 int is_valid(Node* n){
-  //if (validateRange(n) == 0) return 0;
+  if (validateRange(n) == 0) return 0;
 
   int *nums = calloc(10, sizeof(int));
   if (nums == NULL) exit(EXIT_FAILURE);
